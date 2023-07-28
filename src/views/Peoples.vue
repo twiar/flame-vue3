@@ -14,7 +14,8 @@ const props = ref({
     "mass",
     "hair_color",
   ],
-  results: {},
+  results: [],
+  localData: false,
 });
 
 const count = ref(0);
@@ -59,6 +60,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
+  <a href="#" @click="router.go(-1)">Back</a>
   <h1>Peoples <span v-if="store.getters.peoplesStatus === 'default'">({{ count }})</span></h1>
   <div v-if="store.getters.peoplesStatus === 'default'" class="search-container">
     <input type="search" v-model="search" class="search" placeholder="Search..." :disabled="store.getters.peoplesSearchStatus === 'wait'" />

@@ -14,6 +14,10 @@ nav {
   }
 }
 
+button {
+  cursor: pointer;
+}
+
 .link {
   text-decoration: underline;
   font-weight: bold;
