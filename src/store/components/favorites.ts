@@ -2,13 +2,13 @@ import axios from 'axios';
 
 export default {
   state: {
-    peoples: [],
+    favorites: {},
   },
   getters: {
-    peoples: (state) => state.peoples,
+    favorites: (state) => state.favorites,
   },
   actions: {
-		fetchPeoples({ commit }) {
+		fetchFavorites({ commit }) {
 			return new Promise((resolve, reject) => {
 				axios.get('https://swapi.dev/api/people/')
 					.then((response) => {
@@ -22,8 +22,8 @@ export default {
 		},
 	},
   mutations: {
-    SET_PEOPLES(state, payload) {
-      state.peoples = payload;
+    SET_FAVORITES(state, payload) {
+      state.favorites = payload;
     },
   },
 };

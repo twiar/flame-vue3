@@ -1,27 +1,23 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/peoples">Peoples</RouterLink>
-        <RouterLink to="/favorites">Favorites</RouterLink>
-      </nav>
-    </div>
-  </header>
-
   <RouterView />
 </template>
 
 <style lang="scss">
 nav {
+  margin-bottom: 10px;
   & > * {
     margin-right: 10px;
+    font-size: 18px;
     &:last-child {
       margin-right: 0;
     }
   }
+}
+
+.link {
+  text-decoration: underline;
+  font-weight: bold;
+  display: inline-block;
+  cursor: pointer;
 }
 </style>

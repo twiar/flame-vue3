@@ -1,28 +1,36 @@
+<script setup lang="ts">
+import { ref, watch, computed, watchEffect, onBeforeMount } from "vue";
+interface TableProps {
+	columns: Array<string>;
+	results: Record<string, unknown>;
+}
+
+const props = defineProps<TableProps>();
+</script>
+
 <template>
 	<table>
 		<thead>
 			<tr>
-				<th>Column 1</th>
-				<th>Column 2</th>
-				<th>Column 3</th>
+				<th v-for="column in props.columns">{{ column }}</th>
+				<th>Add/Remove Favorite</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>Row 1, Cell 1</td>
-				<td>Row 1, Cell 2</td>
-				<td>Row 1, Cell 3</td>
-			</tr>
-			<tr>
-				<td>Row 2, Cell 1</td>
-				<td>Row 2, Cell 2</td>
-				<td>Row 2, Cell 3</td>
+			<tr v-for="row in props.results">
+				<td 
+					v-for="(value, name) in row"
+					:class="{ 'hidden': !props.columns.find(element => element === name) }"
+					>{{ value }}</td>
+				<td style="width: 80px;">
+					<button>Add</button>
+				</td>
 			</tr>
 		</tbody>
 	</table>
 </template>
 
-<style>
+<style lang="scss" scoped>
 	table {
 			width: 100%;
 			border-collapse: collapse;
@@ -40,5 +48,9 @@
 
 	tr:nth-child(even) {
 			background-color: #f2f2f2;
+	}
+
+	.hidden {
+		display: none;
 	}
 </style>
