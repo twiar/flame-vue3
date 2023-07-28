@@ -24,7 +24,9 @@ const toSingle = (val: string) => {
 			</tr>
 		</thead>
 		<tbody>
-			<tr v-for="row in props.results">
+			<tr 
+				v-for="row in props.results"
+			>
 				<td 
 					v-for="(value, name) in row"
 					:class="{ 'hidden': !props.columns.find(element => element === name) }"
@@ -56,6 +58,15 @@ const toSingle = (val: string) => {
 
 	tr:nth-child(even) {
 			background-color: #f2f2f2;
+	}
+
+	tbody {
+		tr {
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.25);
+				cursor: pointer;
+			}
+		}
 	}
 
 	.hidden {
