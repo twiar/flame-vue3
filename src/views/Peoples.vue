@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { useStore } from "vuex";
 import Table from "@/components/Table";
 
@@ -18,6 +18,8 @@ const props = ref({
 const count = ref(0);
 const next = ref(null);
 const previous = ref(null);
+const search = ref("");
+let delay: number;
 
 const getPage = (val: string) => {
   store.dispatch("fetchPeoples", val).then(() => {
@@ -28,6 +30,13 @@ const getPage = (val: string) => {
   });
 }
 
+watch(search, (newVal, oldVal) => {
+  clearTimeout(delay);
+  delay = setTimeout(() => {
+    getPage(`https://swapi.dev/api/people/?search=${newVal}`);
+  }, 500);
+});
+
 onMounted(() => {
   getPage('https://swapi.dev/api/people/');
 });
@@ -35,6 +44,9 @@ onMounted(() => {
 
 <template>
   <h1>Peoples <span v-if="store.getters.peoplesStatus === 'default'">({{ count }})</span></h1>
+  <div>
+    <input type="search" v-model="search" class="search" placeholder="Search..." />
+  </div>
   <div v-if="store.getters.peoplesStatus === 'wait'">Loading...</div>
   <div v-if="store.getters.peoplesStatus === 'default'">
     <nav>

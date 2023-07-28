@@ -20,4 +20,10 @@ nav {
   display: inline-block;
   cursor: pointer;
 }
+
+.search {
+  padding: 8px;
+  border-radius: 0;
+  margin-bottom: 10px;
+}
 </style>
