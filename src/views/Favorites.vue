@@ -15,10 +15,8 @@ const props = ref({
     "hair_color",
   ],
   results: [],
-  localData: true,
 });
 
-const count = ref(0);
 const loaded = ref(false);
 
 onBeforeMount(() => {
@@ -28,16 +26,13 @@ onBeforeMount(() => {
 		}
 	}
   store.getters.favorites = props.value.results;
-  count.value = props.value.results.length;
   loaded.value = true;
 });
-
-
 </script>
 
 <template>
   <a href="#" @click="router.go(-1)">Back</a>
-  <h1>Favorites ({{ count }})</h1>
+  <h1>Favorites</h1>
   <Table v-bind="props" v-if="loaded" />
 </template>
 

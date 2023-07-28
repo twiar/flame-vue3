@@ -15,7 +15,6 @@ const props = ref({
     "hair_color",
   ],
   results: [],
-  localData: false,
 });
 
 const count = ref(0);
