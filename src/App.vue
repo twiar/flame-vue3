@@ -6,7 +6,6 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/peoples">Peoples</RouterLink>
         <RouterLink to="/favorites">Favorites</RouterLink>
       </nav>
@@ -16,7 +15,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 nav {
   & > * {
     margin-right: 10px;

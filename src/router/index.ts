@@ -9,6 +9,7 @@ const router = createRouter({
       name: 'home',
       component: Home
     },
+
     {
       path: '/peoples',
       name: 'peoples',
@@ -19,6 +20,7 @@ const router = createRouter({
       name: 'peoples-single',
       component: () => import('@/views/Peoples/Single.vue'),
     },
+    
     {
       path: '/favorites',
       name: 'favorites',
